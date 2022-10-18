@@ -1,9 +1,13 @@
 pipeline {
     agent any
     stages {
-        stage('git repo & clean') {
+        stage('git repo') {
             steps {
-//                 bat "git clone https://github.com/isurupathumherath/hello-world-sample-project-lolc.git"
+                bat "git clone https://github.com/isurupathumherath/hello-world-sample-project-lolc.git"
+            }
+        }
+        stage('clean') {
+            steps {
                 bat "mvn clean -f hello-world-sample-project-lolc"
             }
         }
