@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('git repo') {
             steps {
+                bat "ls -a"
                 bat "rm -rf hello-world-sample-project-lolc"
                 bat "git clone https://github.com/isurupathumherath/hello-world-sample-project-lolc.git"
             }
