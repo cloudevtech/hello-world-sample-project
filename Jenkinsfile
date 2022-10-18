@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('git repo & clean') {
             steps {
-                bat "git clone https://github.com/isurupathumherath/hello-world-sample-project-lolc.git"
+//                 bat "git clone https://github.com/isurupathumherath/hello-world-sample-project-lolc.git"
                 bat "mvn clean -f hello-world-sample-project-lolc"
             }
         }
