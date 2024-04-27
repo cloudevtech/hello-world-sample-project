@@ -2,7 +2,6 @@ pipeline {
     agent any
     tools {
         maven "maven"
-        docker 'docker'
     }
     stages {
         stage('git repo') {
@@ -33,6 +32,12 @@ pipeline {
         //     }
         // }
         stage('Build Docker Image') {
+            agent {
+                docker {
+                    image 'docker:latest'
+                    args '-v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }
             steps {
                 script {
                     // Define Dockerfile path
