@@ -22,16 +22,16 @@ pipeline {
                 sh "mvn install -f hello-world-sample-project-lolc"
             }
         }
-        stage('test') {
-            steps {
-                sh "mvn test -f hello-world-sample-project-lolc"
-            }
-        }
-        stage('package') {
-            steps {
-                sh "mvn package -f hello-world-sample-project-lolc"
-            }
-        }
+        // stage('test') {
+        //     steps {
+        //         sh "mvn test -f hello-world-sample-project-lolc"
+        //     }
+        // }
+        // stage('package') {
+        //     steps {
+        //         sh "mvn package -f hello-world-sample-project-lolc"
+        //     }
+        // }
         stage('Build Docker Image') {
             steps {
                 script {
