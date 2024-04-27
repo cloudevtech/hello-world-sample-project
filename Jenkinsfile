@@ -3,6 +3,11 @@ pipeline {
     tools {
         maven "maven"
     }
+
+    environment {
+        KANIKO_IMAGE = 'gcr.io/kaniko-project/executor:latest'
+    }
+    
     stages {
         stage('git repo') {
             steps {
@@ -32,19 +37,13 @@ pipeline {
         //     }
         // }
         stage('Build Docker Image') {
-            agent {
-                docker {
-                    image 'docker:latest'
-                    args '-v /var/run/docker.sock:/var/run/docker.sock'
-                }
-            }
             steps {
                 script {
                     // Define Dockerfile path
                     def dockerfile = './Dockerfile'
                     
-                    // Build Docker image
-                    sh "docker build -t java-sample -f ${dockerfile} ."
+                    // Run Kaniko to build the Docker image
+                    sh "${KANIKO_IMAGE} --dockerfile=${dockerfile} --destination=my-docker-image ."
                 }
             }
         }
