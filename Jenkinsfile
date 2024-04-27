@@ -31,5 +31,16 @@ pipeline {
                 bat "mvn package -f hello-world-sample-project-lolc"
             }
         }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Define Dockerfile path
+                    def dockerfile = './Dockerfile'
+                    
+                    // Build Docker image
+                    sh "docker build -t java-sample -f ${dockerfile} ."
+                }
+            }
+        }
     }
 }
