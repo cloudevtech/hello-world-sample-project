@@ -4,9 +4,9 @@ pipeline {
         maven "maven"
     }
 
-    // environment {
-    //     KANIKO_IMAGE = 'gcr.io/kaniko-project/executor:latest'
-    // }
+    environment {
+        KANIKO_IMAGE = 'gcr.io/kaniko-project/executor:latest'
+    }
     
     stages {
         stage('git repo') {
@@ -26,26 +26,26 @@ pipeline {
                 sh "mvn install -f hello-world-sample-project-lolc"
             }
         }
-        stage('test') {
-            steps {
-                sh "mvn test -f hello-world-sample-project-lolc"
-            }
-        }
-        stage('package') {
-            steps {
-                sh "mvn package -f hello-world-sample-project-lolc"
-            }
-        }
-        // stage('Build Docker Image') {
+        // stage('test') {
         //     steps {
-        //         script {
-        //             // Define Dockerfile path
-        //             def dockerfile = './Dockerfile'
-                    
-        //             // Run Kaniko to build the Docker image
-        //             sh "${KANIKO_IMAGE} --dockerfile=${dockerfile} --no-push"
-        //         }
+        //         sh "mvn test -f hello-world-sample-project-lolc"
         //     }
         // }
+        // stage('package') {
+        //     steps {
+        //         sh "mvn package -f hello-world-sample-project-lolc"
+        //     }
+        // }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Define Dockerfile path
+                    def dockerfile = './Dockerfile'
+                    
+                    // Run Kaniko to build the Docker image
+                    sh "${KANIKO_IMAGE} --dockerfile=${dockerfile} --no-push"
+                }
+            }
+        }
     }
 }
