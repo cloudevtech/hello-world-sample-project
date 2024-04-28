@@ -39,7 +39,7 @@ pipeline {
                     def dockerfile = './Dockerfile'
                     
                     // Build Docker image
-                    sh "docker build -t sample-java-project -f ${dockerfile} ."
+                    sh "sudo docker build -t sample-java-project -f ${dockerfile} ."
                 }
             }
         }
