@@ -3,10 +3,6 @@ pipeline {
     tools {
         maven "maven"
     }
-
-    environment {
-        KANIKO_IMAGE = 'gcr.io/kaniko-project/executor:debug'
-    }
     
     stages {
         stage('git repo') {
@@ -42,8 +38,8 @@ pipeline {
                     // Define Dockerfile path
                     def dockerfile = './Dockerfile'
                     
-                    // Run Kaniko to build the Docker image
-                    sh "${KANIKO_IMAGE} --dockerfile=${dockerfile} --no-push"
+                    // Build Docker image
+                    sh "docker build -t sample-java-project -f ${dockerfile} ."
                 }
             }
         }
