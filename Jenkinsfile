@@ -35,13 +35,6 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Add user to Docker group
-                    sh "sudo usermod -aG docker ${env.USER}"
-                    // Restart Docker service
-                    sh "sudo service docker restart"
-                    
-                    // Define Dockerfile path
-                    def dockerfile = './Dockerfile'
                     
                     // Build Docker image
                     sh "docker build -t sample-java-project -f ${dockerfile} ."
