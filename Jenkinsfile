@@ -5,7 +5,7 @@ pipeline {
     }
 
     environment {
-        KANIKO_IMAGE = 'gcr.io/kaniko-project/executor:latest'
+        KANIKO_IMAGE = 'gcr.io/kaniko-project/executor:debug'
     }
     
     stages {
