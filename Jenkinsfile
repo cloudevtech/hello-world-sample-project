@@ -43,7 +43,7 @@ pipeline {
         //             def dockerfile = './Dockerfile'
                     
         //             // Run Kaniko to build the Docker image
-        //             sh "${KANIKO_IMAGE} --dockerfile=${dockerfile} --destination=my-docker-image ."
+        //             sh "${KANIKO_IMAGE} --dockerfile=${dockerfile} --no-push"
         //         }
         //     }
         // }
