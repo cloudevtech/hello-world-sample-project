@@ -35,6 +35,9 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
+
+                    // Defining Dockerfile
+                    def dockerfile = './Dockerfile'
                     
                     // Build Docker image
                     sh "docker build -t sample-java-project -f ${dockerfile} ."
