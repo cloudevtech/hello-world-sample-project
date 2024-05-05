@@ -1,1 +1,1 @@
-# hello-world-sample-project-lolc
+# hello-world-sample-project

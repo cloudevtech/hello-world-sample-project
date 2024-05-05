@@ -18,6 +18,6 @@ public class HelloWorldApplication {
 
     @GetMapping("/welcome")
     public String sayHello() {
-        return String.format("Welcome LOLC FusionX Cloud Team");
+        return String.format("Welcome to DevOps Course");
     }
 }
