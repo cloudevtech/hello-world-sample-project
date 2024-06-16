@@ -48,5 +48,17 @@ pipeline {
                 }
             }
         }
+
+        stage('Build Docker Image with Kaniko') {
+            steps {
+                container('kaniko') {
+                    script {
+
+                        // Run Kaniko Build Command
+                        sh "executor --context=. --dockerfile=./Dockerfile --no-push"
+                    }
+                }
+            }
+        }
     }
 }
