@@ -36,18 +36,6 @@ pipeline {
         //         sh "mvn package -f hello-world-sample-project-lolc"
         //     }
         // }
-        stage('Build Docker Image') {
-            steps {
-                script {
-
-                    // Defining Dockerfile
-                    def dockerfile = './Dockerfile'
-                    
-                    // Build Docker image
-                    sh "docker build -t sample-java-project -f ${dockerfile} ."
-                }
-            }
-        }
 
         stage('Build Docker Image with Kaniko') {
             steps {
