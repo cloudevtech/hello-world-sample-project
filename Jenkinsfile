@@ -16,11 +16,13 @@ pipeline {
                 sh "git clone https://github.com/isurupathumherath/hello-world-sample-project-lolc.git"
             }
         }
-        stage('clean') {
-            steps {
-                sh "mvn clean -f hello-world-sample-project-lolc"
-            }
-        }
+
+        // stage('clean') {
+        //     steps {
+        //         sh "mvn clean -f hello-world-sample-project-lolc"
+        //     }
+        // }
+
         stage('install') {
             steps {
                 sh "mvn install -f hello-world-sample-project-lolc"
