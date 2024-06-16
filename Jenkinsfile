@@ -45,7 +45,7 @@ pipeline {
                     script {
 
                         // Run Kaniko Build Command
-                        sh "executor --context=. --dockerfile=./Dockerfile --no-push"
+                        sh "executor --context=`pwd` --dockerfile=`pwd`/Dockerfile --no-push"
                     }
                 }
             }
