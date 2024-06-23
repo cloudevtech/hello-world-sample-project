@@ -12,6 +12,11 @@ spec:
     command:
     - /busybox/cat    
     tty: true
+    volumeMounts:
+      - name: acr-secret
+        items:
+            - key: .dockerconfigjson
+              path: config.json
   - name: maven
     image: maven:3.6.0-jdk-8
     securityContext:
@@ -19,3 +24,7 @@ spec:
     command:
     - cat
     tty: true  
+  volumes:
+      - name: acr-secret
+        secret:
+          secretName: acr-secret  
