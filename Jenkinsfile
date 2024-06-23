@@ -47,7 +47,7 @@ pipeline {
                         // Run Kaniko Build Command
                         sh "pwd"
                         sh "ls -a"
-                        sh "/kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --build-arg GIT_COMMIT=$gitCommit --build-arg ARTIFACT=target/hello-world-0.0.1-SNAPSHOT.jar --no-push
+                        sh "/kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --build-arg GIT_COMMIT=$gitCommit --build-arg ARTIFACT=target/hello-world-0.0.1-SNAPSHOT.jar --no-push"
                     }
                 }
             }
