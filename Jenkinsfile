@@ -17,22 +17,18 @@ pipeline {
             }
         }
 
-        // stage('clean') {
-        //     steps {
-        //         sh "mvn clean -f hello-world-sample-project-lolc"
-        //     }
-        // }
+        stage('clean') {
+            steps {
+                sh "mvn clean -f hello-world-sample-project-lolc"
+            }
+        }
 
         stage('install') {
             steps {
                 sh "mvn install -f hello-world-sample-project-lolc"
             }
         }
-        // stage('test') {
-        //     steps {
-        //         sh "mvn test -f hello-world-sample-project-lolc"
-        //     }
-        // }
+
         stage('package') {
             steps {
                 sh "mvn package"
@@ -52,5 +48,6 @@ pipeline {
                 }
             }
         }
+
     }
 }
