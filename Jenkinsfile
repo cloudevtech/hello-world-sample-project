@@ -33,11 +33,11 @@ pipeline {
         //         sh "mvn test -f hello-world-sample-project-lolc"
         //     }
         // }
-        // stage('package') {
-        //     steps {
-        //         sh "mvn package -f hello-world-sample-project-lolc"
-        //     }
-        // }
+        stage('package') {
+            steps {
+                sh "mvn package"
+            }
+        }
 
         stage('Build Docker Image with Kaniko') {
             steps {
@@ -47,7 +47,7 @@ pipeline {
                         // Run Kaniko Build Command
                         sh "pwd"
                         sh "ls -a"
-                        sh "/kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --build-arg ARTIFACT=target/hello-world-0.0.1-SNAPSHOT.jar --no-push"
+                        sh "/kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --no-push"
                     }
                 }
             }
