@@ -32,10 +32,10 @@ public class HelloWorldApplication {
         SpringApplication.run(HelloWorldApplication.class, args);
     }
 
-    @GetMapping("/welcome")
-    public String sayHello() {
-        return String.format("Welcome to DevOps Course");
-    }
+    // @GetMapping("/welcome")
+    // public String sayHello() {
+    //     return String.format("Welcome to DevOps Course");
+    // }
 
     @Override
     public void run(String... args) throws Exception {
