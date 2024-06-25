@@ -1,16 +1,9 @@
 package com.lolctech.helloworld;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.Entity;
@@ -21,27 +14,18 @@ import java.util.List;
 import java.util.Optional;
 
 @SpringBootApplication
-@RequestMapping(value = "/hello-world")
-@RestController
 public class HelloWorldApplication {
-
-    @Autowired
-    private PersonRepository personRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(HelloWorldApplication.class, args);
     }
 
-    // @GetMapping("/welcome")
-    // public String sayHello() {
-    //     return String.format("Welcome to DevOps Course");
-    // }
-
-    @Override
-    public void run(String... args) throws Exception {
-        // Sample data
-        personRepository.save(new Person("John Doe", "123 Main St"));
-        personRepository.save(new Person("Jane Smith", "456 Maple Ave"));
+    @Bean
+    CommandLineRunner initDatabase(PersonRepository personRepository) {
+        return args -> {
+            personRepository.save(new Person("John Doe", "123 Main St"));
+            personRepository.save(new Person("Jane Smith", "456 Maple Ave"));
+        };
     }
 }
 
@@ -94,8 +78,11 @@ interface PersonRepository extends JpaRepository<Person, Long> {
 @RestController
 @RequestMapping("/api/persons")
 class PersonController {
-    @Autowired
-    private PersonRepository personRepository;
+    private final PersonRepository personRepository;
+
+    public PersonController(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
 
     @GetMapping
     public List<Person> getAllPersons() {
