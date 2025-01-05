@@ -1,20 +1,20 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: jenkins-slave
-  namespace: jenkins-slave
+  name: kubernetes-agent
+  namespace: default
   labels:
-    name: jenkins-slave
+    name: kubernetes-agent
 spec:
   containers:
-  - name: kaniko
-    image: gcr.io/kaniko-project/executor:debug
-    command:
-    - /busybox/cat    
-    tty: true
-    volumeMounts:
-      - name: acr-secret
-        mountPath: /kaniko/.docker/ 
+  # - name: kaniko
+  #   image: gcr.io/kaniko-project/executor:debug
+  #   command:
+  #   - /busybox/cat    
+  #   tty: true
+  #   volumeMounts:
+  #     - name: acr-secret
+  #       mountPath: /kaniko/.docker/ 
   - name: maven
     image: maven:3.6.0-jdk-8
     securityContext:
@@ -22,7 +22,7 @@ spec:
     command:
     - cat
     tty: true  
-  volumes:
-      - name: acr-secret
-        secret:
-          secretName: acr-secret  
+  # volumes:
+  #     - name: acr-secret
+  #       secret:
+  #         secretName: acr-secret  
