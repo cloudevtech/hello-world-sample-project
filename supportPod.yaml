@@ -12,6 +12,10 @@ spec:
     command:
     - /busybox/cat    
     tty: true
+    resources:
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
     # volumeMounts:
     #   - name: acr-secret
     #     mountPath: /kaniko/.docker/ 
@@ -22,6 +26,10 @@ spec:
     command:
     - cat
     tty: true  
+    resources:
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
   # volumes:
   #     - name: acr-secret
   #       secret:
