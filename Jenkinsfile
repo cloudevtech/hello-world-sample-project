@@ -1,14 +1,12 @@
 pipeline {
 
-    // agent {
-    //   kubernetes {
-    //     defaultContainer 'maven'
-    //     // yaml libraryResource('supportPod.yaml')
-    //     yamlFile 'supportPod.yaml'
-    //   }
-    // }
-
-    agent any
+    agent {
+      kubernetes {
+        defaultContainer 'maven'
+        // yaml libraryResource('supportPod.yaml')
+        yamlFile 'supportPod.yaml'
+      }
+    }
     
     stages {
         stage('git repo') {
