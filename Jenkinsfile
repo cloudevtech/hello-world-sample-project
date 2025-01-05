@@ -25,7 +25,7 @@ pipeline {
 
         stage('install') {
             steps {
-                sh "mvn install -f hello-world-sample-project-lolc"
+                sh "mvn install -DskipTests -f hello-world-sample-project-lolc "
             }
         }
 
