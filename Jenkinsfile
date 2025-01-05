@@ -35,19 +35,19 @@ pipeline {
             }
         }
 
-        // stage('Build Docker Image with Kaniko') {
-        //     steps {
-        //         container('kaniko') {
-        //             script {
+        stage('Build Docker Image with Kaniko') {
+            steps {
+                container('kaniko') {
+                    script {
 
-        //                 // Run Kaniko Build Command
-        //                 sh "pwd"
-        //                 sh "ls -a"
-        //                 sh "/kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=azdevopscourse.azurecr.io/sample-java-project:latest" 
-        //             }
-        //         }
-        //     }
-        // }
+                        // Run Kaniko Build Command
+                        sh "pwd"
+                        sh "ls -a"
+                        sh "/kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=azdevopscourse.azurecr.io/sample-java-project:latest --no-push" 
+                    }
+                }
+            }
+        }
 
     }
 }
