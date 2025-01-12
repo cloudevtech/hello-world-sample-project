@@ -27,17 +27,17 @@ pipeline {
         //     }
         // }
 
-        stage('install') {
-            steps {
-                sh "mvn install -DskipTests -f hello-world-sample-project-lolc "
-            }
-        }
-
-        // stage('package') {
+        // stage('install') {
         //     steps {
-        //         sh "mvn package -DskipTests"
+        //         sh "mvn install -DskipTests -f hello-world-sample-project-lolc"
         //     }
         // }
+
+        stage('package') {
+            steps {
+                sh "mvn package -DskipTests"
+            }
+        }
 
         stage('Build Docker Image with Kaniko') {
             steps {
