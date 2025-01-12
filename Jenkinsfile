@@ -47,7 +47,7 @@ pipeline {
                         // Run Kaniko Build Command
                         sh "pwd"
                         sh "ls -a"
-                        sh "/kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=docker.io/isurupathumherath/cloudev_java:latest" 
+                        sh "/kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=docker.io/isurupathumherath/cloudev_java:latest --verbosity=debug" 
                     }
                 }
             }
