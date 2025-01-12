@@ -17,7 +17,7 @@ spec:
     #     memory: "512Mi"
     #     cpu: "500m"
     volumeMounts:
-      - name: dockerhub-secret
+      - name: docker-config
         mountPath: /kaniko/.docker/ 
   - name: maven
     image: maven:3.6.0-jdk-8
@@ -31,6 +31,6 @@ spec:
     #     memory: "512Mi"
     #     cpu: "500m"
   volumes:
-      - name: dockerhub-secret
+      - name: docker-config
         secret:
           secretName: dockerhub-secret
