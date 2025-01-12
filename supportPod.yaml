@@ -16,9 +16,12 @@ spec:
     #   limits:
     #     memory: "512Mi"
     #     cpu: "500m"
+    env:
+    - name: GOOGLE_APPLICATION_CREDENTIALS
+      value: /secret/key.json
     volumeMounts:
-      - name: docker-config
-        mountPath: /kaniko/.docker/ 
+    - name: kaniko-secret
+      mountPath: /secret
   - name: maven
     image: maven:3.6.0-jdk-8
     securityContext:
@@ -31,6 +34,6 @@ spec:
     #     memory: "512Mi"
     #     cpu: "500m"
   volumes:
-      - name: docker-config
+      - name: kaniko-secret
         secret:
           secretName: kaniko-secret
