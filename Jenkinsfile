@@ -21,11 +21,11 @@ pipeline {
             }
         }
 
-        stage('clean') {
-            steps {
-                sh "mvn clean -f hello-world-sample-project-lolc"
-            }
-        }
+        // stage('clean') {
+        //     steps {
+        //         sh "mvn clean -f hello-world-sample-project-lolc"
+        //     }
+        // }
 
         stage('install') {
             steps {
