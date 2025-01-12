@@ -7,6 +7,10 @@ pipeline {
         yamlFile 'supportPod.yaml'
       }
     }
+
+    environment {
+      DOCKER_REGISTRY_CREDS = credentials('Docker-Registry')
+    }
     
     stages {
         stage('git repo') {
