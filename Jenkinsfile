@@ -29,11 +29,11 @@ pipeline {
             }
         }
 
-        stage('package') {
-            steps {
-                sh "mvn package -DskipTests"
-            }
-        }
+        // stage('package') {
+        //     steps {
+        //         sh "mvn package -DskipTests"
+        //     }
+        // }
 
         stage('Build Docker Image with Kaniko') {
             steps {
