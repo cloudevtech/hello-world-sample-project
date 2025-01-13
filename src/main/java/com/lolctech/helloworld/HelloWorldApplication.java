@@ -39,7 +39,7 @@ public class HelloWorldApplication {
     CommandLineRunner initDatabase(PersonRepository personRepository) {
         return args -> {
             personRepository.save(new Person("John Doe", "123 Main St"));
-            personRepository.save(new Person("Jane Smith", "456 Maple Ave"));
+            personRepository.save(new Person("Jane Steve", "456 Maple Ave"));
         };
     }
 }
