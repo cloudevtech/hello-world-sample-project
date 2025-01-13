@@ -47,7 +47,7 @@ pipeline {
                         // Run Kaniko Build Command
                         sh "pwd"
                         sh "ls -a"
-                        sh "/kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=us-central1-docker.pkg.dev/cloudev-tech-trail/cloudev-practical/hello-world:latest --verbosity=debug" 
+                        sh "/kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=us-central1-docker.pkg.dev/cloudev-tech-trail/cloudev-practical/hello-world:v1 --verbosity=debug" 
                     }
                 }
             }
